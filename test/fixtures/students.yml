@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  string: MyString
+  cohort_number: MyString
+  integer: MyString
+  origin_city: MyString
+  string: MyString
+  origin_state: MyString
+  string: MyString
+  cohort_city: MyString
+  string: MyString
+  cohort_state: MyString
+  string: MyString
+  current_city: MyString
+  string: MyString
+  current_state: MyString
+  string: MyString
+
+two:
+  first_name: MyString
+  last_name: MyString
+  string: MyString
+  cohort_number: MyString
+  integer: MyString
+  origin_city: MyString
+  string: MyString
+  origin_state: MyString
+  string: MyString
+  cohort_city: MyString
+  string: MyString
+  cohort_state: MyString
+  string: MyString
+  current_city: MyString
+  string: MyString
+  current_state: MyString
+  string: MyString
