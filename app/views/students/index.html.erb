@@ -35,8 +35,7 @@
 //       mapOptions);
 //   geocoder = new google.maps.Geocoder();
 //   bounds = new google.maps.LatLngBounds();
-// }
-
+//
 function initialize() {
   var myLatlng = new google.maps.LatLng(39.50, -98.35);
   var mapOptions = {
@@ -45,11 +44,16 @@ function initialize() {
   }
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Hello World!'
-  });
+  for (var i = 0; i < gon.students.length - 1; i ++) {
+    var lat = gon.students[i].cohort_lat;
+    var lng = gon.students[i].cohort_long;
+    var position = new google.maps.LatLng(lat, lng);
+    var marker = new google.maps.Marker({
+        position: position,
+        map: map,
+        title: gon.students[i].first_name+" "+gon.students[i].last_name
+      })
+    };
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

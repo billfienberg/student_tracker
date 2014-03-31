@@ -6,6 +6,9 @@ gem 'rails', '4.0.4'
 # Postgres
 gem 'pg'
 
+# Gon
+gem 'gon'
+
 # Bootstrap
 gem 'bootstrap-sass'
 
