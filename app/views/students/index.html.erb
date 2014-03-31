@@ -36,7 +36,7 @@
 //   geocoder = new google.maps.Geocoder();
 //   bounds = new google.maps.LatLngBounds();
 // }
-var geocoder = new GClientGeocoder();
+
 function initialize() {
   var myLatlng = new google.maps.LatLng(39.50, -98.35);
   var mapOptions = {
@@ -46,7 +46,7 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
   var marker = new google.maps.Marker({
-      position: geocoder.getLatLng({city: "Austin", state: "TX"}),
+      position: myLatlng,
       map: map,
       title: 'Hello World!'
   });
