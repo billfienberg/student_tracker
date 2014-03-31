@@ -21,21 +21,7 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
-// var map;
-// var bounds;
-// var geocoder;
-// var center;
-// function initialize() {
-//   var mapOptions = {
-//     zoom: 4,
-//     center: new google.maps.LatLng(39.50, -98.35),
-//     mapTypeId: google.maps.MapTypeId.ROADMAP
-//   };
-//   map = new google.maps.Map(document.getElementById('map-canvas'),
-//       mapOptions);
-//   geocoder = new google.maps.Geocoder();
-//   bounds = new google.maps.LatLngBounds();
-//
+
 function initialize() {
   var myLatlng = new google.maps.LatLng(39.50, -98.35);
   var mapOptions = {
@@ -44,26 +30,38 @@ function initialize() {
   }
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  for (var i = 0; i < gon.students.length - 1; i ++) {
-    var lat = gon.students[i].cohort_lat;
-    var lng = gon.students[i].cohort_long;
-    var position = new google.maps.LatLng(lat, lng);
-    var marker = new google.maps.Marker({
-        position: position,
-        map: map,
-        title: gon.students[i].first_name+" "+gon.students[i].last_name,
-        draggable: true
-      })
-    };
-}
 
-google.maps.event.addDomListener(window, 'load', initialize);
+    for (var i = 0; i < gon.students.length - 1; i ++) {
+        var lat = gon.students[i].current_lat;
+        var lng = gon.students[i].current_long;
+        var position = new google.maps.LatLng(lat, lng);
+        var marker = new google.maps.Marker({
+          position: position,
+          map: map,
+          title: gon.students[i].first_name+" "+gon.students[i].last_name+" in " + gon.students[i].current_city+", "+gon.students[i].current_state
+        })
+      };
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
 
     </script>
   </head>
   <body>
     <div id="map-canvas"></div>
     <%= render 'table' %>
+    <script>
+    $('#current-btn').on('click', function(e) {
+      e.preventDefault();
+      console.log('current');
+    });
+
+    $('#origin-btn').on('click', function(e) {
+      e.preventDefault();
+      console.log('origin');
+    });
+    </script>
   </body>
 </html>
 
