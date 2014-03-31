@@ -5,43 +5,24 @@
       <tr>
           <th>First Name</th>
           <th>Last Name</th>
-          <div class="btn-group">
-        <th>
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          Cohort <span class="caret"></span>
-          </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-          </ul>
-        </div>
-
-
-          <th>Origin City<span class="caret"></span>
-          </th>
-          <th>Origin State<span class="caret"></span></th>
-          <th>Cohort City<span class="caret"></span></th>
-          <th>Cohort State<span class="caret"></span></th>
-          <th>Current City<span class="caret"></span></th>
-          <th>Current State<span class="caret"></span></th>
+          <th>Cohort</th>
+          <th>Origin City</th>
+          <th>Cohort City</th>
+          <th>Current City</th>
       </tr>
     </thead>
     <tbody>
+      <% @i = 1 %>
         <% @students.each do |student| %>
         <tr>
           <td><%= student.first_name %></td>
           <td><%= student.last_name %></td>
           <td><%= student.cohort_number %></td>
-          <td><%= student.origin_city %></td>
-          <td><%= student.origin_state %></td>
-          <td><%= student.cohort_city %></td>
-          <td><%= student.cohort_state %></td>
-          <td><%= student.current_city %></td>
-          <td><%= student.current_state %></td>
+          <td class="origin_city<%= @i%>" ><%= student.origin_city %>, <%= student.origin_state %></td>
+          <td class="cohort_city<%= @i%>"><%= student.cohort_city %>, <%= student.cohort_state %></td>
+          <td class="current_city<%= @i%>"><%= student.current_city %>, <%= student.current_city %></td>
         </tr>
+          <% @i += 1 %>
           <% end %>
     </tbody>
   </table>
