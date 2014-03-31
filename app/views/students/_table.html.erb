@@ -1,0 +1,33 @@
+<div id="table">
+  <table class="table">
+    <h4>Check out our students!</h4>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Cohort</th>
+        <th>Origin City</th>
+        <th>Origin State</th>
+        <th>Cohort City</th>
+        <th>Cohort State</th>
+        <th>Current City</th>
+        <th>Current State</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @students.each do |student| %>
+        <tr>
+          <td><%= student.first_name %></td>
+          <td><%= student.last_name %></td>
+          <td><%= student.cohort_number %></td>
+          <td><%= student.origin_city %></td>
+          <td><%= student.origin_state %></td>
+          <td><%= student.cohort_city %></td>
+          <td><%= student.cohort_state %></td>
+          <td><%= student.current_city %></td>
+          <td><%= student.current_state %></td>
+        </tr>
+          <% end %>
+    </tbody>
+  </table>
+</div>
