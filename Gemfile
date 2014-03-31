@@ -5,7 +5,7 @@ gem 'rails', '4.0.4'
 
 # Postgres
 gem 'pg'
-
+gem 'hirb'
 # Gon
 gem 'gon'
 

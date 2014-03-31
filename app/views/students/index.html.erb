@@ -51,7 +51,8 @@ function initialize() {
     var marker = new google.maps.Marker({
         position: position,
         map: map,
-        title: gon.students[i].first_name+" "+gon.students[i].last_name
+        title: gon.students[i].first_name+" "+gon.students[i].last_name,
+        draggable: true
       })
     };
 }
