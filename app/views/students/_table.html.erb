@@ -20,7 +20,7 @@
           <td><%= student.cohort_number %></td>
           <td class="origin_city<%= @i%>" ><%= student.origin_city %>, <%= student.origin_state %></td>
           <td class="cohort_city<%= @i%>"><%= student.cohort_city %>, <%= student.cohort_state %></td>
-          <td class="current_city<%= @i%>"><%= student.current_city %>, <%= student.current_city %></td>
+          <td class="current_city<%= @i%>"><%= student.current_city %>, <%= student.current_state %></td>
         </tr>
           <% @i += 1 %>
           <% end %>

@@ -3,7 +3,6 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>Matt Denton</title>
   <link rel="stylesheet" href="css/normalize.css" type="text/css" media="screen">
   <link rel="stylesheet" href="css/grid.css" type="text/css" media="screen">
   <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
@@ -22,20 +21,35 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
-var map;
-var bounds;
-var geocoder;
-var center;
+// var map;
+// var bounds;
+// var geocoder;
+// var center;
+// function initialize() {
+//   var mapOptions = {
+//     zoom: 4,
+//     center: new google.maps.LatLng(39.50, -98.35),
+//     mapTypeId: google.maps.MapTypeId.ROADMAP
+//   };
+//   map = new google.maps.Map(document.getElementById('map-canvas'),
+//       mapOptions);
+//   geocoder = new google.maps.Geocoder();
+//   bounds = new google.maps.LatLngBounds();
+// }
+var geocoder = new GClientGeocoder();
 function initialize() {
+  var myLatlng = new google.maps.LatLng(39.50, -98.35);
   var mapOptions = {
     zoom: 4,
-    center: new google.maps.LatLng(39.50, -98.35),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-  geocoder = new google.maps.Geocoder();
-  bounds = new google.maps.LatLngBounds();
+    center: myLatlng
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: geocoder.getLatLng({city: "Austin", state: "TX"}),
+      map: map,
+      title: 'Hello World!'
+  });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
