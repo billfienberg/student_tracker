@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
 
   def index
-    @students = Student.all
+    @students = Student.all(:order => "cohort_number, last_name")
     gon.students = Student.all
     @cohort1 = Student.where(cohort_number: 1)
     @cohort2 = Student.where(cohort_number: 2)
