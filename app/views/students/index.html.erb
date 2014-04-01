@@ -106,8 +106,11 @@ function initialize() {
         $('#map-canvas').empty();
 
         var map;
-        var mapOptions = { center: new google.maps.LatLng(0.0, 0.0), zoom: 2,
-        mapTypeId: google.maps.MapTypeId.ROADMAP };
+        var mapOptions = {
+          center: new google.maps.LatLng(0.0, 0.0),
+          zoom: 2,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
         var markers = [];
 
         function initialize() {
@@ -132,9 +135,9 @@ function initialize() {
 
             // addMarker(from1,to1);
             marker = new google.maps.Marker({
-            position: from_position,
-            map: map,
-            destination: to1
+              position: from_position,
+              map: map,
+              destination: to1
             })
 
             fromLat = from1.lat();
@@ -157,8 +160,7 @@ function initialize() {
                 setTimeout(function() {
                   move(marker, latlngs, index+1, wait, newDestination);
                 }, wait);
-              }
-              else {
+              } else {
                 // assign new route
                 marker.position = marker.destination;
                 marker.destination = newDestination;
@@ -166,21 +168,22 @@ function initialize() {
             }
             move(marker, frames, 0, 50, marker.position);
           }
-
-          }
-
+        }
         initialize();
-    });
+      });
 
     $("#cohort_to_current").on("click", function(e){
-          e.preventDefault();
-          console.log("Now leaving Austin");
-          $('#map-canvas').empty();
+      e.preventDefault();
+      console.log("Now leaving Austin");
+      $('#map-canvas').empty();
 
-          var map;
-        var mapOptions = { center: new google.maps.LatLng(0.0, 0.0), zoom: 2,
-        mapTypeId: google.maps.MapTypeId.ROADMAP };
-        var markers = [];
+      var map;
+      var mapOptions = {
+        center: new google.maps.LatLng(0.0, 0.0),
+        zoom: 2,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var markers = [];
 
         function initialize() {
           var myLatlng = new google.maps.LatLng(39.50, -98.35);
@@ -204,9 +207,9 @@ function initialize() {
 
             // addMarker(from1,to1);
             marker = new google.maps.Marker({
-            position: from_position,
-            map: map,
-            destination: to1
+              position: from_position,
+              map: map,
+              destination: to1
             })
 
             fromLat = from1.lat();
@@ -238,12 +241,10 @@ function initialize() {
             }
             move(marker, frames, 0, 50, marker.position);
           }
-
-          }
-
+        }
         initialize();
+      });
     });
-  });
 
     </script>
   </head>
