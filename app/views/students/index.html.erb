@@ -41,6 +41,9 @@ function initialize() {
   $('#origin-btn').on('click', function(e) {
       e.preventDefault();
       window.clearOverlays();
+      $('#map-canvas').empty();
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
     for (var i = 0; i < gon.students.length; i ++) {
 
         var lat = gon.students[i].origin_lat;
@@ -68,14 +71,14 @@ function initialize() {
         else {
           color = black};
 
-        
+
         var marker = new google.maps.Marker({
           icon: color,
           position: position,
           map: map,
           title: gon.students[i].first_name+" "+gon.students[i].last_name+" in " + gon.students[i].origin_city+", "+gon.students[i].origin_state,
           draggable: true,
-          
+
         })
         markersArray.push(marker);
 
@@ -93,6 +96,8 @@ function initialize() {
     $('#current-btn').on('click', function(e) {
       e.preventDefault();
       window.clearOverlays();
+      $('#map-canvas').empty();
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
       for (var i = 0; i < gon.students.length; i ++) {
         var lat = gon.students[i].current_lat;
         var lng = gon.students[i].current_long;
