@@ -95,7 +95,13 @@ function initialize() {
     google.maps.event.addDomListener(window, 'load', initialize);
 
     // Everything above this works
-$("#.")
+    $(document).ready(function(){
+
+      $("#origin_to_cohort").on("click", function(e){
+        e.preventDefault();
+        console.log("Hello");
+      })
+    })
 
 
     </script>
