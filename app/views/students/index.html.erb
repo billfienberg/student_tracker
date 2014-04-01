@@ -22,7 +22,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
 var markersArray = [];
-
+var markers = [];
 function clearOverlays() {
   for (var i = 0; i < markersArray.length; i++ ) {
     markersArray[i].setMap(null);
@@ -41,7 +41,8 @@ function initialize() {
   $('#origin-btn').on('click', function(e) {
       e.preventDefault();
       window.clearOverlays();
-    for (var i = 0; i < gon.students.length - 1; i ++) {
+    for (var i = 0; i < gon.students.length; i ++) {
+
         var lat = gon.students[i].origin_lat;
         var lng = gon.students[i].origin_long;
         var position = new google.maps.LatLng(lat, lng);
@@ -52,14 +53,22 @@ function initialize() {
           draggable: true
         })
         markersArray.push(marker);
+
+
+        google.maps.event.addListener(marker, 'click', function() {
+            map.setZoom(8);
+            map.setCenter(marker.getPosition());
+          });
+
       };
+
+
     });
 
     $('#current-btn').on('click', function(e) {
       e.preventDefault();
       window.clearOverlays();
-      for (var i = 0; i < gon.students.length - 1; i ++) {
-
+      for (var i = 0; i < gon.students.length; i ++) {
         var lat = gon.students[i].current_lat;
         var lng = gon.students[i].current_long;
         var position = new google.maps.LatLng(lat, lng);
@@ -71,6 +80,13 @@ function initialize() {
           draggable: true
         })
         markersArray.push(marker);
+
+
+        google.maps.event.addListener(marker, 'click', function() {
+            map.setZoom(8);
+            map.setCenter(marker.getPosition());
+          });
+
       };
 
     });
