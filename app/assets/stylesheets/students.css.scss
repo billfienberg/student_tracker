@@ -1,3 +1,18 @@
 // Place all the styles related to the students controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+ .navbar {
+  background-color: #BFDDF5;
+ }
+
+ #logo {
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin-top: 5px;
+  margin-right: 5px
+ }
+ #table {
+ margin-top: 50px
+ }
