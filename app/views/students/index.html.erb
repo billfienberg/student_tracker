@@ -95,6 +95,156 @@ function initialize() {
     google.maps.event.addDomListener(window, 'load', initialize);
 
 
+
+    // EVERYTHING ABOVE THIS WORKS!
+    var marker;
+    $(document).ready(function(){
+
+      $("#origin_to_cohort").on("click", function(e){
+        e.preventDefault();
+        console.log("Welcome to Austin");
+        $('#map-canvas').empty();
+
+        var map;
+        var mapOptions = { center: new google.maps.LatLng(0.0, 0.0), zoom: 2,
+        mapTypeId: google.maps.MapTypeId.ROADMAP };
+        var markers = [];
+
+        function initialize() {
+          var myLatlng = new google.maps.LatLng(39.50, -98.35);
+          var mapOptions = {
+            zoom: 4,
+            center: myLatlng
+          }
+          var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+          for (var i = 0; i < gon.students.length; i++) {
+            var from_lat = gon.students[i].origin_lat;
+            var from_lng = gon.students[i].origin_long;
+            var from_position = new google.maps.LatLng(from_lat, from_lng);
+
+            var to_lat = gon.students[i].cohort_lat;
+            var to_lng = gon.students[i].cohort_long;
+            var to_position = new google.maps.LatLng(to_lat, to_lng);
+
+            from1 = new google.maps.LatLng(from_lat,from_lng);
+            to1 = new google.maps.LatLng(to_lat,to_lng);
+
+            // addMarker(from1,to1);
+            marker = new google.maps.Marker({
+            position: from_position,
+            map: map,
+            destination: to1
+            })
+
+            fromLat = from1.lat();
+            fromLng = from1.lng();
+            toLat = to1.lat();
+            toLng = to1.lng();
+
+            // store a LatLng for each step of the animation
+            frames = [];
+            for (var percent = 0; percent < 1; percent += 0.01) {
+              curLat = fromLat + percent * (toLat - fromLat);
+              curLng = fromLng + percent * (toLng - fromLng);
+              frames.push(new google.maps.LatLng(curLat, curLng));
+            }
+
+            var move = function (marker, latlngs, index, wait, newDestination) {
+              marker.setPosition(latlngs[index]);
+              if(index != latlngs.length-1) {
+                // call the next "frame" of the animation
+                setTimeout(function() {
+                  move(marker, latlngs, index+1, wait, newDestination);
+                }, wait);
+              }
+              else {
+                // assign new route
+                marker.position = marker.destination;
+                marker.destination = newDestination;
+              }
+            }
+            move(marker, frames, 0, 50, marker.position);
+          }
+
+          }
+
+        initialize();
+    });
+
+    $("#cohort_to_current").on("click", function(e){
+          e.preventDefault();
+          console.log("Now leaving Austin");
+          $('#map-canvas').empty();
+
+          var map;
+        var mapOptions = { center: new google.maps.LatLng(0.0, 0.0), zoom: 2,
+        mapTypeId: google.maps.MapTypeId.ROADMAP };
+        var markers = [];
+
+        function initialize() {
+          var myLatlng = new google.maps.LatLng(39.50, -98.35);
+          var mapOptions = {
+            zoom: 4,
+            center: myLatlng
+          }
+          var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+          for (var i = 0; i < gon.students.length; i++) {
+            var from_lat = gon.students[i].cohort_lat;
+            var from_lng = gon.students[i].cohort_long;
+            var from_position = new google.maps.LatLng(from_lat, from_lng);
+
+            var to_lat = gon.students[i].current_lat;
+            var to_lng = gon.students[i].current_long;
+            var to_position = new google.maps.LatLng(to_lat, to_lng);
+
+            from1 = new google.maps.LatLng(from_lat,from_lng);
+            to1 = new google.maps.LatLng(to_lat,to_lng);
+
+            // addMarker(from1,to1);
+            marker = new google.maps.Marker({
+            position: from_position,
+            map: map,
+            destination: to1
+            })
+
+            fromLat = from1.lat();
+            fromLng = from1.lng();
+            toLat = to1.lat();
+            toLng = to1.lng();
+
+            // store a LatLng for each step of the animation
+            frames = [];
+            for (var percent = 0; percent < 1; percent += 0.01) {
+              curLat = fromLat + percent * (toLat - fromLat);
+              curLng = fromLng + percent * (toLng - fromLng);
+              frames.push(new google.maps.LatLng(curLat, curLng));
+            }
+
+            var move = function (marker, latlngs, index, wait, newDestination) {
+              marker.setPosition(latlngs[index]);
+              if(index != latlngs.length-1) {
+                // call the next "frame" of the animation
+                setTimeout(function() {
+                  move(marker, latlngs, index+1, wait, newDestination);
+                }, wait);
+              }
+              else {
+                // assign new route
+                marker.position = marker.destination;
+                marker.destination = newDestination;
+              }
+            }
+            move(marker, frames, 0, 50, marker.position);
+          }
+
+          }
+
+        initialize();
+    });
+  });
+
     </script>
   </head>
   <body>
