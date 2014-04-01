@@ -46,11 +46,36 @@ function initialize() {
         var lat = gon.students[i].origin_lat;
         var lng = gon.students[i].origin_long;
         var position = new google.maps.LatLng(lat, lng);
+        var cohort = parseInt(gon.students[i].cohort_number);
+        var color;
+        var purple = "http://labs.google.com/ridefinder/images/mm_20_purple.png";
+        var yellow = "http://labs.google.com/ridefinder/images/mm_20_yellow.png";
+        var blue = "http://labs.google.com/ridefinder/images/mm_20_blue.png";
+        var white = "http://labs.google.com/ridefinder/images/mm_20_white.png";
+        var black = "http://labs.google.com/ridefinder/images/mm_20_black.png"
+
+        if (cohort == 1) {
+          color = purple
+        } else if (cohort == 2) {
+          color = yellow
+        }
+        else if (cohort == 3) {
+          color = blue
+        }
+        else if (cohort == 4) {
+          color = white
+        }
+        else {
+          color = black};
+
+        
         var marker = new google.maps.Marker({
+          icon: color,
           position: position,
           map: map,
           title: gon.students[i].first_name+" "+gon.students[i].last_name+" in " + gon.students[i].origin_city+", "+gon.students[i].origin_state,
-          draggable: true
+          draggable: true,
+          
         })
         markersArray.push(marker);
 
@@ -74,6 +99,7 @@ function initialize() {
         var position = new google.maps.LatLng(lat, lng);
 
         var marker = new google.maps.Marker({
+          fillColor: "#0000FF",
           position: position,
           map: map,
           title: gon.students[i].first_name+" "+gon.students[i].last_name+" in " + gon.students[i].current_city+", "+gon.students[i].current_state,
