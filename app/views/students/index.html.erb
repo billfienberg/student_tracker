@@ -113,7 +113,7 @@ function initialize() {
         function initialize() {
           var myLatlng = new google.maps.LatLng(39.50, -98.35);
           var mapOptions = {
-            zoom: 2,
+            zoom: 4,
             center: myLatlng
           }
           var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -122,8 +122,12 @@ function initialize() {
           var from_lng = gon.students[0].origin_long;
           var from_position = new google.maps.LatLng(from_lat, from_lng);
 
+          var to_lat = gon.students[0].cohort_lat;
+          var to_lng = gon.students[0].cohort_long;
+          var to_position = new google.maps.LatLng(to_lat, to_lng);
+
           from1 = new google.maps.LatLng(from_lat,from_lng);
-          to1 = new google.maps.LatLng(40,12);
+          to1 = new google.maps.LatLng(to_lat,to_lng);
 
           // addMarker(from1,to1);
           marker = new google.maps.Marker({
